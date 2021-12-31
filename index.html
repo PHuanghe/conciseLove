@@ -1,96 +1,196 @@
-<!DOCTYPE html
-  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <!--<meta name="viewport"-->
-<!--content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">-->
-
+	  <!--content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">-->
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <title>1314</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>1314</title>
 
-  <style type="text/css">
-    @font-face {
-      font-family: digit;
-      src: url('digital-7_mono.ttf') format("truetype");
-    }
+<style type="text/css">
+@font-face {
+	font-family: digit;
+	src: url('digital-7_mono.ttf') format("truetype");
+}
+#container {
+	width: 600px;
+	height: 600px;
+	margin: 0 auto 50px auto;
+	position: fixed;
+	top: 28%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	background-size: 100%!important;
+	
+}
+</style>
 
-    #container {
-      width: 500px;
-      height: 300px;
-      margin: 0 auto 50px auto;
-      position: relative;
-      background-size: 100% !important;
-    }
-  </style>
-
-  <link href="css/default.css" type="text/css" rel="stylesheet">
-  <script type="text/javascript" src="js/jquery.js"></script>
-  <script type="text/javascript" src="js/garden.js"></script>
-  <script type="text/javascript" src="js/functions.js"></script>
+<link href="css/default.css" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/garden.js"></script>
+<script type="text/javascript" src="js/functions.js"></script>
 
 </head>
 
 <body>
-  <div id="mainDiv">
-    <div id="content">
-      <div id="loveHeart">
-        <canvas id="garden"></canvas>
-        <div id="words">
-          <div id="messages">
-            亲爱的xxx，这是我们相识在一起的时光。
-            <div id="elapseClock"></div>
-          </div>
-          <div id="loveu">
-            爱你直到永永远远。<br />
-            <div class="signature">- 爱你的xxx</div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!--<div id="copyright">-->
-    <!--<a href="#">....</a><br />-->
-    <!--<a href="#">....</a><br />-->
-    <!---->
-    <!--</div>-->
-  </div>
+<div id="mainDiv">
+	<div id="container"></div>
+	<div id="content">
+		<div id="loveHeart">
+			<canvas id="garden"></canvas>
+			<div id="words">
+				<div id="messages">
+					亲爱的小凤，元旦快乐，祝你开心快乐的度过每一天！。
+					<!-- <div id="elapseClock"></div> -->
+				</div>
+				<div id="loveu">
+					<!-- 爱你直到永永远远。<br/> -->
+					<div class="signature">- 爱你的黄河</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--<div id="copyright">-->
+		<!--<a href="#">....</a><br />-->
+		<!--<a href="#">....</a><br />-->
+		<!---->
+	<!--</div>-->
+</div>
+<script>
 
-  <script type="text/javascript">
-    startHeartAnimation();
-    // return
-    var offsetX = $("#loveHeart").width() / 2;
-    var offsetY = $("#loveHeart").height() / 2 - 55;
-    // var offsetX = 670;
-    // var offsetY = 625;
-    var together = new Date('2019/04/05 00:00:00');
-    // together.setFullYear(2019, 4, 5);
-    // together.setHours(0);
-    // together.setMinutes(0);
-    // together.setSeconds(0);
-    // together.setMilliseconds(0);
-    // if (!document.createElement('canvas').getContext) {
-    //   var msg = document.createElement("div");
-    //   msg.id = "errorMsg";
-    //   msg.innerHTML = "Your browser doesn't support HTML5!<br/>Recommend use Chrome 14+/IE 9+/Firefox 7+/Safari 4+";
-    //   document.body.appendChild(msg);
-    //   $("#code").css("display", "none")
-    //   $("#copyright").css("position", "absolute");
-    //   $("#copyright").css("bottom", "10px");
-    //   document.execCommand("stop");
-    // } else {
-    //   setTimeout(function () {
-    //     startHeartAnimation();
-    //   }, 5000);
+	window.onload =function()
+	{
+		//your code
+	}
 
-    //   timeElapse(together);
-    //   setInterval(function () {
-    //     timeElapse(together);
-    //   }, 500);
+    window.onload = burst;
+    function burst() {
+        var ready = true;
+        var img = document.querySelector('#container');
+        var S = 1;
+        var R = 4;
+        var C = 7;
+        var W = parseInt(window.getComputedStyle(img)['width']);
+        var H = parseInt(window.getComputedStyle(img)['height']);
+        var N = 2;
+        var maxW = N * W;
+        var maxH = N * H;
+        var now = 0;
+        var imgArr = [
+            './img/1.jpg',
+            './img/2.jpg',
+            './img/3.jpg',
+            './img/4.jpg',
+        ];
+        img.style.background = 'url(' + imgArr[0] + ') no-repeat';
+        var next = function () {
+            return (now + 1) % imgArr.length;
+        }
+        // window.setTimeout(
+        //     onmouseover()
+        //     ,1000);
+        window.setInterval(function () {
+            onmouseover();
+        },3000);
+        // img.onmouseover = function () {
+        function onmouseover() {
+            if (!ready) return;
+            ready = false;
+            var html = document.createDocumentFragment();
 
-    //   adjustCodePosition();
-    //   $("#code").typewriter();
-    // }
-  </script>
+            if (now + 1 >= imgArr.length) {
+                img.style.background = 'url(' + imgArr[0] + ') no-repeat';
+            } else {
+                img.style.background = 'url(' + imgArr[now + 1] + ') no-repeat';
+            }
+            var posArr = [];
+            var k = 0;
+
+            for (var i = 0; i < R; i++) {
+                for (var j = 0; j < C; j++) {
+                    posArr[k] = {
+                        left: W * j / C,
+                        top: H * i / R,
+                        endLeft: maxW * j / C - (maxW - (maxW - W) / C - W) / 2,
+                        endTop: maxH * i / R - (maxH - (maxH - H) / R - H) / 2,
+                    };
+
+                    var debris = document.createElement("div");
+                    var url = imgArr[now];
+                    debris.style.cssText = `
+                            position: absolute;
+                            width: ${Math.ceil(W / C)}px;
+                            height: ${Math.ceil(H / R)}px;
+                            background: url(${url}) -${posArr[k].left}px -${posArr[k].top}px  no-repeat;
+                            left: ${posArr[k].left}px;
+                            top: ${posArr[k].top}px;
+                            opacity:1;
+                            transition:${randomNum(0.1, S)}s ease;
+                            `;
+                    html.appendChild(debris);
+                    k++;
+                }
+            }
+            img.appendChild(html);
+            var debrisAll = img.children;
+            setTimeout(function () {
+                for (var i = 0; i < debrisAll.length; i++) {
+                    var l = posArr[i].endLeft;
+                    var t = posArr[i].endTop;
+                    debrisAll[i].style.cssText += `
+                            left : ${l}px;
+                            top : ${t}px;
+                            opacity :0;
+                            transform:perspective(500px) rotateX(${randomNum(-180, 180)}deg) rotateY(${randomNum(-180, 180)}deg) rotateZ(${randomNum(-180, 180)}deg) scale(${randomNum(1.5, 3)});
+                        `;
+                }
+                setTimeout(function () {
+                    img.innerHTML = '';
+                    ready = true;
+                    now = next();
+                }, S * 1000);
+
+            }, 100);
+        }
+
+        function randomNum(n, m) {
+            return Math.random() * (m - n) + n;
+        }
+    }
+</script>
+
+<script type="text/javascript">
+var offsetX = $("#loveHeart").width() / 2;
+var offsetY = $("#loveHeart").height() / 2 - 55;
+var together = new Date('2019/04/05 00:00:00');
+// together.setFullYear(2019, 4, 5);
+// together.setHours(0);
+// together.setMinutes(0);
+// together.setSeconds(0);
+// together.setMilliseconds(0);
+
+if (!document.createElement('canvas').getContext) {
+	var msg = document.createElement("div");
+	msg.id = "errorMsg";
+	msg.innerHTML = "Your browser doesn't support HTML5!<br/>Recommend use Chrome 14+/IE 9+/Firefox 7+/Safari 4+"; 
+	document.body.appendChild(msg);
+	$("#code").css("display", "none")
+	$("#copyright").css("position", "absolute");
+	$("#copyright").css("bottom", "10px");
+	document.execCommand("stop");
+} else {
+	setTimeout(function () {
+		startHeartAnimation();
+	}, 1000);
+
+	timeElapse(together);
+	setInterval(function () {
+		timeElapse(together);
+	}, 500);
+
+	adjustCodePosition();
+	$("#code").typewriter();
+}
+</script>
 
 </body>
-
 </html>
